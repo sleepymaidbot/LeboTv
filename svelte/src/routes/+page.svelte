@@ -91,7 +91,7 @@
 							<Card.Root>
 								<Card.Content class="flex aspect-square items-center justify-center p-6">
 									<span class="text-3xl font-semibold">{item.name}</span>
-									<enhanced:img src={item.image} alt="logo" />
+									<img src={item.image} alt="logo" />
 								</Card.Content>
 							</Card.Root>
 						</div>
