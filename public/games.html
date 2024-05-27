@@ -2,17 +2,17 @@
 <html lang="en">
 
 <head>
+    <link rel="icon" type="image/x-icon" href="/public/img/lebotv.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="public/styles/styles.css">
-    <link rel="icon" type="image/x-icon" href="public/img/lebotv.png">
+    <link rel="stylesheet" href="/public/styles/games.css">
     <title>Select Your Service | LeboTv</title>
 </head>
 
 <body>
     <Section id="home">
         <header>
-            <a class="logo" href="/"><img src="public/img/lebotv.png" alt="logo" width="91" height="67"
+            <a class="logo" href="/"><img src="/public/img/lebotv.png" alt="logo" width="64" height="64"
                     viewBox="0 0 128 128"></a>
             <nav>
                 <ul class="nav__links">
@@ -21,8 +21,12 @@
 
                 </ul>
             </nav>
-
-            <p class="menu cta"><button>Menu</button> </p>
+            <input type="checkbox" id="hi">
+            <label class="menu" for="hi">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </label>
         </header>
         <div class="overlay">
             <a class="close">&times;</a>
@@ -31,7 +35,7 @@
                 <a href="games">Games</a>
             </div>
         </div>
-        <script type="text/javascript" src="public/js/mobile.js"></script>
+        <script type="text/javascript" src="/public/js/mobile.js"></script>
     </Section>
     <main>
 
@@ -39,7 +43,7 @@
             <div class="carousel__wrapper">
                 <h1 class="carousel__header">Select your Service</h1>
                 <div class="carousel__nav">
-                    <div class="carousel__nav__item" data-direction="prev" >
+                    <div class="carousel__nav__item" data-direction="prev">
                         <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" role="img" width="24px"
                             height="24px" fill="none">
                             <path stroke="currentColor" stroke-width="1.5" d="M15.525 18.966L8.558 12l6.967-6.967">
@@ -56,36 +60,44 @@
                 </div>
                 <div class="carousel">
                     <div class="carousel__item carousel__item">
-                        <a href="https://svip.sytes.net/radarr"><div>
-                            <img src="public/img/minecraft.png" width="64" height="64" viewBox="0 0 128 128">
-                            <div class="carousel__item__name">Minecraft</div></a>
-                        </div>
-                    </div>
-                    <div class="carousel__item carousel__item">
-                        <a href="https://svip.sytes.net/radarr"><div>
-                            <img src="public/img/beamNG.png" width="64" height="64" viewBox="0 0 128 128">
-                            <div class="carousel__item__name">BeamNG</div></a>
-                        </div>
-                    </div>
-                    <div class="carousel__item carousel__item">
-                        <a href="https://svip.sytes.net/radarr"><div>
-                            <img src="public/img/pz.png" width="64" height="64" viewBox="0 0 128 128">
-                            <div class="carousel__item__name">Project </div>
-                            <div class="carousel__item__name">Zomboid</div></a>
-                        </div>
-                    </div>
-                    <div class="carousel__item carousel__item">
-                        <a href="https://svip.sytes.net/radarr"><div>
-                            <img src="public/img/terraria.png" width="82" height="64" viewBox="0 0 128 128">
-                            <div class="carousel__item__name">Terraria</div></a>
-                        </div>
+                        <a href="https://svip.sytes.net/radarr">
+                            <div>
+                                <img src="/public/img/minecraft.png" width="64" height="64" viewBox="0 0 128 128">
+                                <div class="carousel__item__name">Minecraft</div>
+                        </a>
                     </div>
                 </div>
+                <div class="carousel__item carousel__item">
+                    <a href="https://svip.sytes.net/radarr">
+                        <div>
+                            <img src="/public/img/beamNG.png" width="64" height="64" viewBox="0 0 128 128">
+                            <div class="carousel__item__name">BeamNG</div>
+                    </a>
+                </div>
+            </div>
+            <div class="carousel__item carousel__item">
+                <a href="https://svip.sytes.net/radarr">
+                    <div>
+                        <img src="/public/img/pz.png" width="64" height="64" viewBox="0 0 128 128">
+                        <div class="carousel__item__name">Project </div>
+                        <div class="carousel__item__name">Zomboid</div>
+                </a>
+            </div>
+            </div>
+            <div class="carousel__item carousel__item">
+                <a href="https://svip.sytes.net/radarr">
+                    <div>
+                        <img src="/public/img/terraria.png" width="82" height="64" viewBox="0 0 128 128">
+                        <div class="carousel__item__name">Terraria</div>
+                </a>
+            </div>
+            </div>
+            </div>
             </div>
 
         </section>
     </main>
-    <script type="text/javascript" src="public/js/carousel.js"></script>
+    <script type="text/javascript" src="/public/js/gamesc.js"></script>
 
 </body>
 
