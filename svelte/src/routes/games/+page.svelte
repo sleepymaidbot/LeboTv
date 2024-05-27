@@ -29,16 +29,17 @@
   ];
 </script>
 
-
-<h1>Select your Game server you want to Join!</h1>
-{#each games as game}
-  <Card.Root class="items-center w-[25%]">
-    <Card.Header class="flex items-center justify-between">
-      <Card.Title>{game.name}</Card.Title>
-      <img src={game.image} alt="logo" width="64" height="64" />
-    </Card.Header>
-    <Card.Content>
-      <p>Card Content</p>
-    </Card.Content>
-  </Card.Root>
-{/each}
+<div class="pt-20">
+	<h1>Select your Game server you want to Join!</h1>
+	{#each games as game}
+		<Card.Root class="items-center w-[25%]">
+			<Card.Header class="flex items-center justify-between">
+				<Card.Title>{game.name}</Card.Title>
+				<img src={game.image} alt="logo" width="64" height="64" />
+			</Card.Header>
+			<Card.Content>
+				<p>Card Content</p>
+			</Card.Content>
+		</Card.Root>
+	{/each}
+</div>
