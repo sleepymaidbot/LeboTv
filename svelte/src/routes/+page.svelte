@@ -1,175 +1,100 @@
-<Section id="home">
-    <header>
-        <a class="logo" href="/"><img src="/public/img/lebotv.png" alt="logo" width="64" height="64"
-                viewBox="0 0 128 128"></a>
-        <nav>
-            <ul class="nav__links">
-                <li><a href="index">home</a></li>
-                <li><a href="games">Games</a></li>
+<script>
+	import * as Card from '$lib/components/ui/card/index';
+	import * as Carousel from '$lib/components/ui/carousel/index';
+	import lidarr from '$static/img/lidarr.png';
 
-            </ul>
-        </nav>
-        <input type="checkbox" id="hi">
-        <label class="menu" for="hi">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-        </label>
-    </header>
-    <div class="overlay">
-        <a class="close">&times;</a>
-        <div class="overlay__content">
-            <a href="index">Home</a>
-            <a href="games">Games</a>
-        </div>
-    </div>
-    <script type="text/javascript" src="/public/js/mobile.js"></script>
-</Section>
+	const carousel = [
+		{
+			name: 'Lidarr',
+			url: 'https://svip.sytes.net/lidarr',
+			image: lidarr
+		},
+		{
+			name: 'Radarr',
+			url: 'https://svip.sytes.net/radarr',
+			image: '$/static/img/radarr.svg'
+		},
+		{
+			name: 'Emby',
+			url: 'https://svip.sytes.net/emby',
+			image: '$/static/img/notificationicon.png'
+		},
+		{
+			name: 'Jellyseerr',
+			url: 'http://svip.sytes.net:5055/login',
+			image: 'https://cdn.discordapp.com/emojis/1229927921066442833.webp?size=80&quality=lossless'
+		},
+		{
+			name: 'qBittorrent',
+			url: 'http://svip.sytes.net:8080',
+			image: '$/static/img/New_qBittorrent_Logo.svg'
+		},
+		{
+			name: 'Jellyfin',
+			url: 'https://svip.sytes.net:9443',
+			image: '$/static/img/jellyfin.png'
+		},
+		{
+			name: 'Sonarr',
+			url: 'http://svip.sytes.net:5055/login',
+			image: '$/static/img/sonarr.svg'
+		}
+	];
+</script>
+
+<div id="home">
+	<header>
+		<a class="logo" href="/"
+			><img src="$/static/img/lebotv.png" alt="logo" width="64" height="64" /></a
+		>
+		<nav>
+			<ul class="nav__links">
+				<li><a href="index">home</a></li>
+				<li><a href="games">Games</a></li>
+			</ul>
+		</nav>
+		<input type="checkbox" id="hi" />
+		<label class="menu" for="hi">
+			<div class="bar"></div>
+			<div class="bar"></div>
+			<div class="bar"></div>
+		</label>
+	</header>
+	<div class="overlay">
+		<a class="close" href="/">&times;</a>
+		<div class="overlay__content">
+			<a href="index">Home</a>
+			<a href="games">Games</a>
+		</div>
+	</div>
+</div>
 <main>
-
-    <section>
-        <div class="carousel__wrapper" >
-            <h1 class="carousel__header">Select your Service</h1>
-            <div class="carousel__nav" id="scrollContainer">
-                <div class="carousel__nav__item" data-direction="prev">
-                    <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" role="img" width="24px"
-                        height="24px" fill="none">
-                        <path stroke="currentColor" stroke-width="1.5" d="M15.525 18.966L8.558 12l6.967-6.967">
-                        </path>
-                    </svg>
-                </div>
-                <div class="carousel__nav__item" data-direction="next">
-                    <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" role="img" width="24px"
-                        height="24px" fill="none">
-                        <path stroke="currentColor" stroke-width="1.5" d="M8.474 18.966L15.44 12 8.474 5.033">
-                        </path>
-                    </svg>
-                </div>
-            </div>
-            <div class="carousel">
-                <div class="carousel__item carousel__item">
-                    <a href="https://svip.sytes.net/lidarr">
-                        <div>
-                            <img src="/public/img/lidarr.png" width="64" height="64" viewBox="0 0 128 128">
-                            <div class="carousel__item__name">Lidarr</div>
-                        </div>
-                    </a>
-                </div>
-                <div class="carousel__item carousel__item">
-
-                    <a href="https://svip.sytes.net/radarr">
-                        <div>
-                            <img src="/public/img/radarr.svg" width="64" height="64" viewBox="0 0 128 128">
-                            <div class="carousel__item__name">Radarr</div>
-                    </a>
-
-                    <a href="https://svip.sytes.net/radarr"><div>
-                        <img src="public/img/radarr.svg" width="64" height="64" viewBox="0 0 128 128">
-                        <div class="carousel__item__name">Radarr</div></a>
-                    </div>
-                </div>
-
-                <div class="carousel__item carousel__item">
-                    <a href="https://svip.sytes.net/emby"><div>
-                        <img src="public/img/notificationicon.png" width="64" height="64" viewBox="0 0 128 128">
-                        <div class="carousel__item__name">Emby</div></a>
-                    </div>
-                </div>
-                <div class="carousel__item carousel__item">
-                    <a href="http://svip.sytes.net:5055/login"><div>
-                        <img src="https://cdn.discordapp.com/emojis/1229927921066442833.webp?size=80&quality=lossless"
-                            width="64" height="64" viewBox="0 0 128 128">
-                        <div class="carousel__item__name">Jellyseerr</div></a>
-                    </div>
-                
-                <div class="carousel__item carousel__item">
-                    <a href="http://svip.sytes.net:8080"><div>
-                        <img src="public/img/New_qBittorrent_Logo.svg" width="64" height="64" viewBox="0 0 128 128">
-                        <div class="carousel__item__name">qBittorrent</div></a>
-                    </div>
-                </div>
-                <div class="carousel__item carousel__item">
-                    <a href=" https://svip.sytes.net/jellyfin"><div>
-                        <img src="public/img/jellyfin.png" width="64" height="64" viewBox="0 0 128 128">
-                        <div class="carousel__item__name">Jellyfin</div></a>
-                    </div>
-                </div>
-                <div class="carousel__item carousel__item">
-                    <a href="https://svip.sytes.net:9443"><div>
-                        <img src="public/img/portainer.png" width="64" height="64" viewBox="0 0 128 128">
-                        <div class="carousel__item__name">Portainer</div></a>
-                    </div>
-                </div>
-                <div class="carousel__item carousel__item">
-                    <a href="games"><div>
-                        <img src="public/img/library.svg" width="64" height="64" viewBox="0 0 128 128">
-                        <div class="carousel__item__name">Games</div></a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="carousel__item carousel__item">
-                <a href="https://svip.sytes.net/emby">
-                    <div>
-                        <img src="/public/img/notificationicon.png" width="64" height="64" viewBox="0 0 128 128">
-                        <div class="carousel__item__name">Emby</div>
-                </a>
-            </div>
-        </div>
-        <div class="carousel__item carousel__item">
-            <a href="https://svip.sytes.net/sonarr">
-                <div>
-                    <img src="/public/img/sonarr.svg" width="64" height="64" viewBox="0 0 128 128">
-                    <div class="carousel__item__name">Sonarr</div>
-            </a>
-        </div>
-        </div>
-
-        <div class="carousel__item carousel__item">
-            <a href="http://svip.sytes.net:5055/login">
-                <div>
-                    <img src="https://cdn.discordapp.com/emojis/1229927921066442833.webp?size=80&quality=lossless"
-                        width="64" height="64" viewBox="0 0 128 128">
-                    <div class="carousel__item__name">Jellyseerr</div>
-            </a>
-        </div>
-        </div>
-        <div class="carousel__item carousel__item">
-            <a href="svip.sytes.net:8080" target="_blank">
-                <div>
-                    <img src="/public/img/New_qBittorrent_Logo.svg" width="64" height="64" viewBox="0 0 128 128">
-                    <div class="carousel__item__name">qBittorrent</div>
-            </a>
-        </div>
-        </div>
-        <div class="carousel__item carousel__item">
-            <a href=" https://svip.sytes.net/jellyfin">
-                <div>
-                    <img src="/public/img/jellyfin.png" width="64" height="64" viewBox="0 0 128 128">
-                    <div class="carousel__item__name">Jellyfin</div>
-            </a>
-        </div>
-        </div>
-        <div class="carousel__item carousel__item">
-            <a href="https://svip.sytes.net:9443">
-                <div>
-                    <img src="/public/img/portainer.png" width="64" height="64" viewBox="0 0 128 128">
-                    <div class="carousel__item__name">Portainer</div>
-            </a>
-        </div>
-        </div>
-        <div class="carousel__item carousel__item">
-            <a href="games">
-                <div>
-                    <img src="/public/img/library.svg" width="64" height="64" viewBox="0 0 128 128">
-                    <div class="carousel__item__name">Games</div>
-            </a>
-        </div>
-        </div>
-        </div>
-        </div>
-
-    </section>
+	<section>
+		<div class="carousel__wrapper">
+			<h1 class="carousel__header">Select your Service</h1>
+		</div>
+		<Carousel.Root
+			opts={{
+				align: 'start'
+			}}
+			class="w-full max-w-sm"
+		>
+			<Carousel.Content>
+				{#each carousel as item}
+					<Carousel.Item class="md:basis-1/2 lg:basis-1/3">
+						<div class="p-1">
+							<Card.Root>
+								<Card.Content class="flex aspect-square items-center justify-center p-6">
+									<span class="text-3xl font-semibold">{item.name}</span>
+									<img src={item.image} alt="logo" width="64" height="64" />
+								</Card.Content>
+							</Card.Root>
+						</div>
+					</Carousel.Item>
+				{/each}
+			</Carousel.Content>
+			<Carousel.Previous />
+			<Carousel.Next />
+		</Carousel.Root>
+	</section>
 </main>
-<script type="text/javascript" src="/public/js/carousel.js"></script>
-<script src="/public/js/mobilescroll.js"></script>
