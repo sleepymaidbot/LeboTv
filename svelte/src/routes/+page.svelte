@@ -1,7 +1,12 @@
 <script>
+	import emby from '$lib/assets/emby.png';
+	import jellyfin from '$lib/assets/jellyfin.png';
+	import lidarr from '$lib/assets/lidarr.png';
+	import qbittorrent from '$lib/assets/New_qBittorrent_Logo.svg';
+	import radarr from '$lib/assets/radarr.svg';
+	import sonarr from '$lib/assets/sonarr.svg';
 	import * as Card from '$lib/components/ui/card/index';
 	import * as Carousel from '$lib/components/ui/carousel/index';
-	import lidarr from '$static/img/lidarr.png';
 
 	const carousel = [
 		{
@@ -12,12 +17,12 @@
 		{
 			name: 'Radarr',
 			url: 'https://svip.sytes.net/radarr',
-			image: '$/static/img/radarr.svg'
+			image: radarr
 		},
 		{
 			name: 'Emby',
 			url: 'https://svip.sytes.net/emby',
-			image: '$/static/img/notificationicon.png'
+			image: emby
 		},
 		{
 			name: 'Jellyseerr',
@@ -27,17 +32,17 @@
 		{
 			name: 'qBittorrent',
 			url: 'http://svip.sytes.net:8080',
-			image: '$/static/img/New_qBittorrent_Logo.svg'
+			image: qbittorrent
 		},
 		{
 			name: 'Jellyfin',
 			url: 'https://svip.sytes.net:9443',
-			image: '$/static/img/jellyfin.png'
+			image: jellyfin
 		},
 		{
 			name: 'Sonarr',
 			url: 'http://svip.sytes.net:5055/login',
-			image: '$/static/img/sonarr.svg'
+			image: sonarr
 		}
 	];
 </script>
@@ -86,7 +91,7 @@
 							<Card.Root>
 								<Card.Content class="flex aspect-square items-center justify-center p-6">
 									<span class="text-3xl font-semibold">{item.name}</span>
-									<img src={item.image} alt="logo" width="64" height="64" />
+									<enhanced:img src={item.image} alt="logo" />
 								</Card.Content>
 							</Card.Root>
 						</div>
