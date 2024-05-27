@@ -1,5 +1,20 @@
-<script>
+<script lang="ts">
+	import { browser } from '$app/environment';
 	import lebotv from '$lib/assets/lebotv.png';
+
+	if (browser) {
+		const menuOpen = document.querySelector('.menu')!;
+		const menuClose = document.querySelector('.close')!;
+		const overlay = document.querySelector('.overlay')!;
+
+		menuOpen.addEventListener('click', () => {
+			overlay.classList.add('overlay--active');
+		});
+
+		menuClose.addEventListener('click', () => {
+			overlay.classList.remove('overlay--active');
+		});
+	}
 </script>
 
 <div id="home">
