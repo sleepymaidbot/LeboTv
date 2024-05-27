@@ -47,33 +47,32 @@
 	];
 </script>
 
-<main>
-	<section>
-		<div class="carousel__wrapper">
-			<h1 class="carousel__header">Select your Service</h1>
-		</div>
-		<Carousel.Root
-			opts={{
-				align: 'start'
-			}}
-			class="w-full max-w-sm"
-		>
-			<Carousel.Content>
-				{#each carousel as item}
-					<Carousel.Item class="md:basis-1/2 lg:basis-1/3">
-						<div class="p-1">
-							<Card.Root>
-								<Card.Content class="flex aspect-square items-center justify-center p-6">
-									<span class="text-3xl font-semibold">{item.name}</span>
-									<img src={item.image} alt="logo" />
-								</Card.Content>
-							</Card.Root>
-						</div>
-					</Carousel.Item>
-				{/each}
-			</Carousel.Content>
-			<Carousel.Previous />
-			<Carousel.Next />
-		</Carousel.Root>
-	</section>
-</main>
+<div class="container flex min-h-screen flex-col items-center justify-center">
+	<h1 class="pb-5 text-4xl font-bold">Select your Service</h1>
+
+	<Carousel.Root
+		opts={{
+			align: 'center'
+		}}
+		class="w-full max-w-sm"
+	>
+		<Carousel.Content>
+			{#each carousel as item}
+				<Carousel.Item class="md:basis-1/2 lg:basis-1/3">
+					<div class="">
+						<Card.Root>
+							<Card.Header>
+								<Card.Title>{item.name}</Card.Title>
+							</Card.Header>
+							<Card.Content class="">
+								<img src={item.image} alt="logo" class="h-[64px] w-[64px]" />
+							</Card.Content>
+						</Card.Root>
+					</div>
+				</Carousel.Item>
+			{/each}
+		</Carousel.Content>
+		<Carousel.Previous />
+		<Carousel.Next />
+	</Carousel.Root>
+</div>

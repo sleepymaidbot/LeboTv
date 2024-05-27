@@ -1,15 +1,13 @@
 <script>
-  import lebotv from '$lib/assets/lebotv.png';
+	import lebotv from '$lib/assets/lebotv.png';
 </script>
 
 <div id="home">
 	<header>
-		<a class="logo" href="/"
-			><img src={lebotv} alt="logo" width="64" height="64" /></a
-		>
+		<a class="logo" href="/"><img src={lebotv} alt="logo" width="64" height="64" /></a>
 		<nav>
 			<ul class="nav__links">
-				<li><a href="index">home</a></li>
+				<li><a href="/">home</a></li>
 				<li><a href="games">Games</a></li>
 			</ul>
 		</nav>
