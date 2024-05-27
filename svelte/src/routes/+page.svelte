@@ -58,7 +58,7 @@
 	>
 		<Carousel.Content>
 			{#each carousel as item}
-				<Carousel.Item class="md:basis-1/2 lg:basis-1/3">
+				<Carousel.Item class=" md:basis-1/2 lg:basis-1/3">
 					<div class="">
 						<Card.Root>
 							<a href={item.url} target="_blank" rel="noopener noreferrer">
