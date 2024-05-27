@@ -4,8 +4,5 @@
 </script>
 
 <ModeWatcher />
-<slot />
 
-<slot></slot>
-
-<style></style>
+<slot/>

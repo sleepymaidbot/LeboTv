@@ -1,8 +1,9 @@
 <script>
+	import qbittorrent from '$lib/assets/New_qBittorrent_Logo.svg';
 	import emby from '$lib/assets/emby.png';
 	import jellyfin from '$lib/assets/jellyfin.png';
+	import lebotv from '$lib/assets/lebotv.png';
 	import lidarr from '$lib/assets/lidarr.png';
-	import qbittorrent from '$lib/assets/New_qBittorrent_Logo.svg';
 	import radarr from '$lib/assets/radarr.svg';
 	import sonarr from '$lib/assets/sonarr.svg';
 	import * as Card from '$lib/components/ui/card/index';
@@ -50,7 +51,7 @@
 <div id="home">
 	<header>
 		<a class="logo" href="/"
-			><img src="$/static/img/lebotv.png" alt="logo" width="64" height="64" /></a
+			><img src={lebotv} alt="logo" width="64" height="64" /></a
 		>
 		<nav>
 			<ul class="nav__links">
