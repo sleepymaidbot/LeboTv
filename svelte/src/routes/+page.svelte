@@ -61,12 +61,14 @@
 				<Carousel.Item class="md:basis-1/2 lg:basis-1/3">
 					<div class="">
 						<Card.Root>
-							<Card.Header>
-								<Card.Title>{item.name}</Card.Title>
-							</Card.Header>
-							<Card.Content class="">
-								<img src={item.image} alt="logo" class="h-[64px] w-[64px]" />
-							</Card.Content>
+							<a href={item.url} target="_blank" rel="noopener noreferrer">
+								<Card.Header>
+									<Card.Title>{item.name}</Card.Title>
+								</Card.Header>
+								<Card.Content class="">
+									<img src={item.image} alt="logo" class="h-[64px] w-[64px]" />
+								</Card.Content>
+							</a>
 						</Card.Root>
 					</div>
 				</Carousel.Item>
