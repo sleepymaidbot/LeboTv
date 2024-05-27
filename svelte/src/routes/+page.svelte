@@ -7,6 +7,7 @@
 	import sonarr from '$lib/assets/sonarr.svg';
 	import * as Card from '$lib/components/ui/card/index';
 	import * as Carousel from '$lib/components/ui/carousel/index';
+	import { Button } from '$lib/components/ui/button';
 
 	const carousel = [
 		{
@@ -58,14 +59,17 @@
 	>
 		<Carousel.Content>
 			{#each carousel as item}
-				<Carousel.Item class="md:basis-1/2 lg:basis-1/3">
+				<Carousel.Item class=" md:basis-1/2 lg:basis-1/3">
 					<div class="">
 						<Card.Root>
 							<Card.Header>
-								<Card.Title>{item.name}</Card.Title>
+								<div class="flex items-center justify-between">
+									<Card.Title>{item.name}</Card.Title>
+								</div>
 							</Card.Header>
 							<Card.Content class="">
 								<img src={item.image} alt="logo" class="h-[64px] w-[64px]" />
+								<Button href={item.url} target="about_blank">Go</Button>
 							</Card.Content>
 						</Card.Root>
 					</div>
