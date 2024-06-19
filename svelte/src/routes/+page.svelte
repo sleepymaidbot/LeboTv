@@ -36,12 +36,12 @@
 		},
 		{
 			name: 'Jellyfin',
-			url: 'https://svip.sytes.net:9443',
+			url: 'https://svip.sytes.net/jellyfin/',
 			image: jellyfin
 		},
 		{
 			name: 'Sonarr',
-			url: 'http://svip.sytes.net:5055/login',
+			url: 'http://svip.sytes.net/sonarr',
 			image: sonarr
 		}
 	];
