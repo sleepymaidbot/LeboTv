@@ -9,6 +9,7 @@ RUN bun install
 
 COPY src src
 COPY postcss.config.js svelte.config.js tailwind.config.ts tsconfig.json vite.config.ts ./
+COPY .svelte-kit .svelte-kit
 COPY static static
 
 RUN bun run build
