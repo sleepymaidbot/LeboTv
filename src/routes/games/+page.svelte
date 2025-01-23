@@ -8,7 +8,7 @@
 	const games = [
 		{
 			name: 'BeamNG',
-			url: 'https://svip.sytes.net/lidarr',
+			url: 'https://svip.sytes.net/start/BeamMP',
 			image: BeamNG,
 			Port: 'Port : 30814/default'
 		},
@@ -32,7 +32,15 @@
 		}
 	];
 </script>
+<style>
+	button{
+		padding: 4%;
+		border-radius: 6px;
+		background-color: aliceblue;
+		color: black;
+	}
 
+</style>
 <div class="container flex min-h-screen flex-col items-center justify-center">
 	<div class="pb-5 text-4xl font-bold">
 		<h1>Select your Game server you want to Join!</h1>
@@ -52,6 +60,19 @@
 						<div class="flex items-center justify-center">
 							<p>{game.Port}</p>
 						</div>
+						<button style="background-color: #2cf562;">
+							<a href="">Start</a>
+						</button>
+						<button >
+							<a href="">
+								Restart
+							</a>
+						</button>
+						<button style="background-color: red;">
+							<a href="">
+								Stop
+							</a>
+						</button>
 					</Card.Content>
 				</Card.Root>
 			</div>
