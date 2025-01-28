@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home - LeboTV</title>
+    <link rel="shortcut icon" href="/assets/lebotv.png" type="image/x-icon" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #0f1522;
+        color: #fff;
+      }
+
+      header {
+        background-color: #000;
+        color: #fff;
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        /* Makes the header sticky */
+        top: 0;
+        /* Sticks to the top of the screen */
+        z-index: 100;
+        /* Ensures it stays above other content */
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+      }
+
+      .logo img {
+        height: 40px;
+        margin-right: 10px;
+      }
+
+      nav ul {
+        display: flex;
+        list-style: none;
+      }
+
+      nav ul li {
+        margin-left: 1em;
+      }
+
+      nav ul li a {
+        color: #fff;
+        font: 400 1.2rem Arial, sans-serif;
+        text-decoration: none;
+      }
+
+      nav ul li a:hover {
+        color: #2e8adb;
+        text-decoration: underline;
+        transition: all 0.2s ease-in-out;
+      }
+
+      .join button {
+        background-color: #fff;
+        color: #000;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        border: none;
+        transition: all 0.3s ease;
+      }
+      .join button:hover {
+        background-color: #000;
+        color: #fff;
+        border: solid 1px #fff;
+      }
+
+      .join button a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .menu-button {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        position: relative;
+        width: 40px;
+        height: 40px;
+        z-index: 1100;
+        /* Ensures it stays above the overlay */
+      }
+
+      .menu-button div {
+        background: white;
+        height: 4px;
+        width: 100%;
+        position: absolute;
+        left: 0;
+        transition: all 0.3s ease;
+      }
+
+      .menu-button div:nth-child(1) {
+        top: 10px;
+      }
+
+      .menu-button div:nth-child(2) {
+        top: 18px;
+      }
+
+      .menu-button div:nth-child(3) {
+        top: 26px;
+      }
+
+      .menu-button.active div:nth-child(1) {
+        transform: rotate(45deg);
+        top: 18px;
+        /* Center it */
+      }
+
+      .menu-button.active div:nth-child(2) {
+        opacity: 0;
+        /* Hide the middle line */
+      }
+
+      .menu-button.active div:nth-child(3) {
+        transform: rotate(-45deg);
+        top: 18px;
+        /* Center it */
+      }
+
+      .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgb(0, 0, 0);
+        z-index: 1000;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+
+      .overlay--active {
+        display: flex;
+      }
+
+      .overlay ul {
+        list-style: none;
+        padding: 20px;
+      }
+
+      .overlay li {
+        margin-bottom: 20px;
+      }
+
+      .overlay a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 24px;
+        transition: all 0.2s;
+      }
+
+      .overlay a:hover {
+        color: #2e8adb;
+        text-decoration: underline;
+      }
+
+      center h1 {
+        margin-bottom: 1em;
+      }
+
+      center {
+        padding: 4em;
+      }
+
+      .server-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 20px;
+        padding: 20px;
+        width: 75%;
+      }
+
+      .server-card {
+        background: rgba(50, 49, 49, 0.32);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(2.4px);
+        -webkit-backdrop-filter: blur(2.4px);
+        color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 250px;
+        /* Ensures uniform card height */
+        transition: all 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .server-card:hover {
+        transform: scale(1.05);
+        /* Increases the size slightly */
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8);
+        /* Adds a more prominent shadow */
+        background: rgba(32, 32, 32, 0.244);
+        backdrop-filter: blur(5.4px);
+        -webkit-backdrop-filter: blur(5.4px);
+      }
+
+      .server-card img {
+        max-width: 100%;
+        height: 100px;
+        /* Fixed height for uniformity */
+        object-fit: contain;
+        margin: 10px 0;
+      }
+
+      .server-card .server-name {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+        font-weight: bold;
+      }
+
+      .server-card .server-description {
+        font-size: 1rem;
+        line-height: 1.5;
+        margin-bottom: 10px;
+      }
+
+      .server-card .server-ip {
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+        font-style: italic;
+      }
+
+      .server-card button {
+        padding: 10px 20px;
+        border-radius: 5px;
+        background-color: #2cf562;
+        color: #000;
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+        margin: 5px;
+      }
+
+      .server-card a {
+        color: white;
+        text-decoration: none;
+      }
+
+      @media (max-width: 1300px) {
+        nav {
+          display: none;
+        }
+
+        .join {
+          display: none;
+        }
+
+        .menu-button {
+          display: block;
+        }
+      }
+
+      @media (max-width: 768px) {
+        nav {
+          display: none;
+        }
+
+        .join {
+          display: none;
+        }
+
+        .join {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <a href="/" style="color: white; text-decoration: none">
+        <div class="logo">
+          <img src="../assets/lebotv.png" alt="logo" />
+          <h1>LeboTV</h1>
+        </div>
+      </a>
+
+      <nav>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="./games/games.html">Games</a></li>
+        </ul>
+      </nav>
+      <div class="join">
+        <button>
+          <a href="https://discord.gg/c4tCcbSHEh">Join Discord</a>
+        </button>
+      </div>
+      <button class="menu-button" id="menu-button">
+        <div></div>
+        <div></div>
+        <div></div>
+      </button>
+      <div class="overlay">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="./games/games.html">Games</a></li>
+          <button class="join">
+            <a href="https://discord.gg/c4tCcbSHEh">Join Discord</a>
+          </button>
+        </ul>
+      </div>
+    </header>
+    <center>
+      <h1>Select your service</h1>
+      <div class="server-cards"></div>
+    </center>
+    <script>
+      const serverCards = {
+        server1: {
+          name: "Radarr",
+          description:
+            "Radarr is a movie collection manager for Usenet and BitTorrent users.",
+          image: "/assets/radarr.svg",
+          link: "https://svip.sytes.net/radarr",
+        },
+        server2: {
+          name: "Emby",
+          description: "Emby is a personal media server and entertainment hub.",
+          image: "/assets/emby.png",
+          link: "https://svip.sytes.net/emby",
+        },
+        server3: {
+          name: "Sonarr",
+          description:
+            "Sonarr is a TV show collection manager for Usenet and BitTorrent users.",
+          image: "/assets/sonarr.svg",
+          link: "https://svip.sytes.net/sonarr",
+        },
+        server4: {
+          name: "Lidarr",
+          description:
+            "Lidarr is a music collection manager for Usenet and BitTorrent users.",
+          image: "./assets/lidarr.png",
+          link: "https://svip.sytes.net/lidarr",
+        },
+        server5: {
+          name: "qBittorrent",
+          description:
+            "qBittorrent is a free and open-source cross-platform BitTorrent client.",
+          image: "/assets/New_qBittorrent_Logo.svg",
+          link: "https://svip.sytes.net:8080",
+        },
+        server6: {
+          name: "Prowlarr",
+          description: "Prowlarr is an indexer manager for TV and movies.",
+          image: "/assets/prowlarr.svg",
+          link: "https://svip.sytes.net",
+        },
+      };
+      const serverCardsContainer = document.querySelector(".server-cards");
+      Object.values(serverCards).forEach((server) => {
+        const serverCard = document.createElement("div");
+        serverCard.className = "server-card";
+        serverCard.innerHTML = `
+                <a href="${server.link}" target="_blank">
+                    <img src="${server.image}" alt="${server.name}">
+                    <div class="server-name">${server.name}</div>
+                    <div class="server-description">${server.description}</div>
+                </a>
+                
+            `;
+        serverCardsContainer.appendChild(serverCard);
+      });
+
+      // Overlay
+      document.addEventListener("DOMContentLoaded", () => {
+        const menuButton = document.getElementById("menu-button");
+        const overlay = document.querySelector(".overlay");
+
+        menuButton.addEventListener("click", () => {
+          overlay.classList.toggle("overlay--active");
+          menuButton.classList.toggle("active");
+        });
+      });
+    </script>
+  </body>
+</html>

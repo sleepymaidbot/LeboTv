@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Games - LeboTV</title>
+    <link rel="shortcut icon" href="/assets/library.svg" type="image/x-icon" />
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #0f1522;
+      color: #fff;
+    }
+    header {
+      background-color: #000;
+      color: #fff;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      z-index: 100;
+      top: 0;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    .logo img {
+      height: 40px;
+      margin-right: 10px;
+    }
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
+    nav ul li {
+      margin-left: 1em;
+    }
+    nav ul li a {
+      color: #fff;
+      font: 400 1.2rem Arial, sans-serif;
+      text-decoration: none;
+    }
+    nav ul li a:hover {
+      color: #2e8adb;
+      text-decoration: underline;
+      transition: all 0.2s ease-in-out;
+    }
+    .join button {
+      background-color: #fff;
+      color: #000;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      transition: all 0.3s ease;
+    }
+    .join button:hover {
+      background-color: #000;
+      color: #fff;
+      border: solid 1px #fff;
+    }
+    .join button a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .menu-button {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      position: relative;
+      width: 40px;
+      height: 40px;
+      z-index: 1100;
+      /* Ensures it stays above the overlay */
+    }
+
+    .menu-button div {
+      background: white;
+      height: 4px;
+      width: 100%;
+      position: absolute;
+      left: 0;
+      transition: all 0.3s ease;
+    }
+
+    .menu-button div:nth-child(1) {
+      top: 10px;
+    }
+
+    .menu-button div:nth-child(2) {
+      top: 18px;
+    }
+
+    .menu-button div:nth-child(3) {
+      top: 26px;
+    }
+
+    .menu-button.active div:nth-child(1) {
+      transform: rotate(45deg);
+      top: 18px;
+      /* Center it */
+    }
+
+    .menu-button.active div:nth-child(2) {
+      opacity: 0;
+      /* Hide the middle line */
+    }
+
+    .menu-button.active div:nth-child(3) {
+      transform: rotate(-45deg);
+      top: 18px;
+      /* Center it */
+    }
+
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgb(0, 0, 0);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .overlay--active {
+      display: flex;
+    }
+
+    .overlay ul {
+      list-style: none;
+      padding: 20px;
+    }
+
+    .overlay li {
+      margin-bottom: 20px;
+    }
+
+    .overlay a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 24px;
+      transition: all 0.2s;
+    }
+
+    .overlay a:hover {
+      color: #2e8adb;
+      text-decoration: underline;
+    }
+    center h1 {
+      margin-bottom: 4em;
+    }
+    center {
+      padding: 4em;
+    }
+    .server-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 20px;
+      padding: 20px;
+      width: 75%;
+    }
+
+    .server-card {
+      /* From https://css.glass */
+      background: rgba(87, 87, 87, 0.32);
+      border-radius: 16px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(2.4px);
+      -webkit-backdrop-filter: blur(2.4px);
+      color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 400px; /* Ensures uniform card height */
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .server-card:hover {
+      transform: scale(1.05); /* Increases the size slightly */
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8); /* Adds a more prominent shadow */
+    }
+
+    .server-card img {
+      max-width: 100%;
+      height: 100px; /* Fixed height for uniformity */
+      object-fit: contain;
+      margin: 10px 0;
+    }
+
+    .server-card .server-name {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .server-card .server-description {
+      font-size: 1rem;
+      line-height: 1.5;
+      margin-bottom: 10px;
+      height: 100px;
+    }
+
+    .server-card .server-ip {
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+      font-style: italic;
+    }
+
+    .server-card button {
+      padding: 10px 20px;
+      border-radius: 5px;
+      background-color: #2cf562;
+      color: #000;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      margin: 5px;
+      transition: all 0.3s ease;
+    }
+    .server-card button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8);
+    }
+
+    .server-card .stop button:nth-child(3) {
+      background-color: red;
+      color: white;
+    }
+
+    .server-card button:hover {
+      opacity: 0.8;
+    }
+    .server-card button a {
+      color: white;
+      text-decoration: none;
+    }
+
+    @media (max-width: 1300px) {
+      nav {
+        display: none;
+      }
+      header {
+        width: 100%;
+      }
+      .join {
+        display: none;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+      }
+      .menu-button {
+        display: block;
+      }
+    }
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+      }
+      header {
+        width: 100%;
+      }
+
+      .join {
+        display: none;
+      }
+
+      h1 {
+        font-size: 4rem;
+        /* Smaller font size for mobile */
+      }
+
+      .join {
+        display: none;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+      }
+
+      .server-cards {
+        width: 100%;
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .server-cards {
+        width: 100%;
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+  <body>
+    <header>
+        <a href="/" style="color: white; text-decoration: none;">
+            <div class="logo">
+                <img src="../assets/lebotv.png" alt="logo" />
+                <h1>LeboTV</h1>
+              </div>
+        </a>
+      <nav>
+        <ul>
+          <li><a href="../">Home</a></li>
+          <li><a href="./games.html">Games</a></li>
+        </ul>
+      </nav>
+      <div class="join">
+        <button>
+          <a href="https://discord.gg/c4tCcbSHEh">Join Discord</a>
+        </button>
+      </div>
+      <button class="menu-button" id="menu-button">
+        <div></div>
+        <div></div>
+        <div></div>
+      </button>
+      <div class="overlay">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="./games/games.html">Games</a></li>
+          <button class="join">
+            <a href="https://discord.gg/c4tCcbSHEh">Join Discord</a>
+          </button>
+        </ul>
+      </div>
+    </header>
+    <center>
+      <h1>Games</h1>
+      <div class="server-cards"></div>
+    </center>
+  </body>
+  <script>
+    const serverCards = {
+      server1: {
+        name: "BeamMP",
+        description:
+          "IP : svip.sytes.net Port : 30814",
+        service_name: "server_BEAMMP",
+        image: "../games/assets/beamNG.png",
+      },
+      PzServer: {
+        name: "PzServer",
+        description:
+          "IP : svip.sytes.net Port : 16261",
+        service_name: "server_PZSERVER",
+        image: "./assets/pz.png",
+      },
+      server2: {
+        name: "Terraria",
+        description: "IP : svip.sytes.net Port : 7777",
+        service_name: "server_terraria",
+        image: "./assets/terraria.png",
+      },
+      server3: {
+        name: "Minecraft",
+        description: "IP : svip.sytes.net Port : 25565 (Default)",
+        image: "./assets/minecraft.png",
+        service_name: "server_mc_hacine",
+      },
+      server4: {
+        name: "Valheim",
+        description:
+          "IP : svip.sytes.net Port : 2456 (Default)",
+        service_name: "server_valheim",
+        image: "./assets/valheim.png",
+      },
+      server5: {
+        name: "Astroneer",
+        description:
+          "IP : svip.sytes.net Port : 30000 (Default)",
+        service_name: "server_astro",
+        image: "./assets/astro.png",
+      },
+    };
+    const serverCardsContainer = document.querySelector(".server-cards");
+
+    Object.values(serverCards).forEach((server) => {
+      const serverCard = document.createElement("div");
+      serverCard.className = "server-card";
+      serverCard.innerHTML = `
+        <div class="server-image">
+            <img src="${server.image}" alt="server-image">
+        </div>
+        <div class="server-name">${server.name}</div>
+        <div class="server-description">${server.description}</div>
+        <button class="start" style="background-color: #2cf562;" onclick="controlService('start', '${server.service_name}')">Start</button>
+<button class="restart" style="background-color: #ffcc00;" onclick="controlService('restart', '${server.service_name}')">Restart</button>
+<button class="stop" style="background-color: red;" onclick="controlService('stop', '${server.service_name}')">Stop</button>
+      `;
+      serverCardsContainer.appendChild(serverCard);
+    });
+
+    // Overlay
+    document.addEventListener("DOMContentLoaded", () => {
+      const menuButton = document.getElementById("menu-button");
+      const overlay = document.querySelector(".overlay");
+
+      menuButton.addEventListener("click", () => {
+        overlay.classList.toggle("overlay--active");
+        menuButton.classList.toggle("active");
+      });
+    });
+    // Control Service on windows for start, stop, restart
+    async function controlService(action, serviceName) {
+      if (!serviceName) {
+        alert("Service name is missing!");
+        return;
+      }
+
+      try {
+        const response = await fetch("http://127.0.0.1:5001/services", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            action: action,
+            service_name: serviceName,
+          }),
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+          alert(result.message);
+        } else {
+          alert(`Error: ${result.message}`);
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        alert("Failed to connect to the server.");
+      }
+    }
+  </script>
+</html>
